@@ -147,6 +147,7 @@ function ApplicationForm() {
           handleSubmit={handleSubmit}
         />
       )}
+      {/* to display the output */}
       {display && <DisplayForm output={output} />}
     </div>
   );
