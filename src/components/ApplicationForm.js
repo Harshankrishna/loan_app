@@ -67,7 +67,7 @@ function ApplicationForm() {
     }, 1000);
   };
 
-  const handleBlur = (forms, handleChange, onAdd, onDelete) => {
+  const blurEventHandler = (forms, handleChange, onAdd, onDelete) => {
     // console.info("~blur", forms);
     const proofDetails = {};
     forms.forEach((form, index) => {
@@ -80,7 +80,7 @@ function ApplicationForm() {
       proofDetails[groupLabel].push(
         <div className="container">
           <div className="add-document">
-            <div key={index} className="input-document">
+            <div key={index}>
               <input
                 required
                 type="text"
@@ -97,7 +97,9 @@ function ApplicationForm() {
                 placeholder="Group Label"
                 name="groupLabel"
                 value={form.groupLabel.toUpperCase()}
-                onBlur={() => handleBlur(forms, handleChange, onAdd, onDelete)} // Pass the required parameters
+                onBlur={() =>
+                  blurEventHandler(forms, handleChange, onAdd, onDelete)
+                } // Pass the required parameters
                 onChange={(e) =>
                   handleChange(form.id, e.target.name, e.target.value)
                 }
@@ -140,7 +142,7 @@ function ApplicationForm() {
           proofName={proofName}
           setProofName={setProofName}
           forms={forms}
-          handleBlur={handleBlur}
+          blurEventHandler={blurEventHandler}
           onAdd={onAdd}
           handleChange={handleChange}
           onDelete={onDelete}
