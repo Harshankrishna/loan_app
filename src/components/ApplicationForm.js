@@ -4,14 +4,16 @@ import ApplicationFormBody from "./ApplicationFormBody";
 import DisplayForm from "./DisplayForm";
 
 function ApplicationForm() {
-  const [output, setOutput] = useState(null);
-  const [proof, setProof] = useState(false);
-  const [display, setDisplay] = useState(false);
-  const [proofName, setProofName] = useState("");
+  const [proofName, setProofName] = useState(""); //proofName
+  const [proof, setProof] = useState(false); //display proofDetails
+  const [display, setDisplay] = useState(false); //display the output
+  const [output, setOutput] = useState(null); //Pass the formatted data as a prop to display the content in the component.
+
   const [forms, setForms] = useState([
     { id: 1, documentName: "", groupLabel: "" },
   ]);
 
+  //to add a field
   const onAdd = () => {
     const newId = forms.length + 1;
     setForms((prevForms) => [
@@ -20,6 +22,7 @@ function ApplicationForm() {
     ]);
   };
 
+  //to delete a field
   const onDelete = (id) => {
     if (forms.length === 1) return;
     setForms((prevForms) =>
@@ -32,6 +35,7 @@ function ApplicationForm() {
     );
   };
 
+  //to manage the data entered in the 'document-name' and 'Group-label' fields
   const handleChange = (id, name, value) => {
     setForms((prevForms) =>
       prevForms.map((form) =>
@@ -40,6 +44,7 @@ function ApplicationForm() {
     );
   };
 
+  //to display in JSON format
   const handleSubmit = () => {
     let grouping = forms.reduce((result, form, index) => {
       let groupLabel = form.groupLabel.toUpperCase() || "";
@@ -117,7 +122,7 @@ function ApplicationForm() {
       );
     });
 
-    // Rendering grouped inputs
+    // rendering proofdetails
     return Object.values(proofDetails).map((group, index) => (
       <div key={index}>{group}</div>
     ));
