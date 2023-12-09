@@ -14,7 +14,7 @@ function ApplicationForm() {
   ]);
 
   //to add a field
-  const onAdd = () => {
+  const onAddProof = () => {
     const newId = forms.length + 1;
     setForms((prevForms) => [
       ...prevForms,
@@ -23,7 +23,7 @@ function ApplicationForm() {
   };
 
   //to delete a field
-  const onDelete = (id) => {
+  const onDeleteProof = (id) => {
     if (forms.length === 1) return;
     setForms((prevForms) =>
       prevForms
@@ -67,7 +67,7 @@ function ApplicationForm() {
     }, 1000);
   };
 
-  const blurEventHandler = (forms, handleChange, onAdd, onDelete) => {
+  const blurEventHandler = (forms, handleChange, onAddProof, onDeleteProof) => {
     // console.info("~blur", forms);
     const proofDetails = {};
     forms.forEach((form, index) => {
@@ -98,7 +98,12 @@ function ApplicationForm() {
                 name="groupLabel"
                 value={form.groupLabel.toUpperCase()}
                 onBlur={() =>
-                  blurEventHandler(forms, handleChange, onAdd, onDelete)
+                  blurEventHandler(
+                    forms,
+                    handleChange,
+                    onAddProof,
+                    onDeleteProof
+                  )
                 } // Pass the required parameters
                 onChange={(e) =>
                   handleChange(form.id, e.target.name, e.target.value)
@@ -107,14 +112,14 @@ function ApplicationForm() {
               <span>{proofDetails[groupLabel].length + 1}</span>
               <button
                 className="cssCircle minusSign"
-                onClick={() => onDelete(form.id)}
+                onClick={() => onDeleteProof(form.id)}
               >
                 &#8211;
               </button>
               <button
                 disabled={!(form.documentName && form.groupLabel)}
                 className="cssCircle plusSign"
-                onClick={onAdd}
+                onClick={onAddProof}
               >
                 &#43;
               </button>
@@ -143,9 +148,9 @@ function ApplicationForm() {
           setProofName={setProofName}
           forms={forms}
           blurEventHandler={blurEventHandler}
-          onAdd={onAdd}
+          onAddProof={onAddProof}
           handleChange={handleChange}
-          onDelete={onDelete}
+          onDeleteProof={onDeleteProof}
           handleSubmit={handleSubmit}
         />
       )}

@@ -5,9 +5,9 @@ function ApplicationFormBody({
   setProofName,
   forms,
   blurEventHandler,
-  onAdd,
+  onAddProof,
   handleChange,
-  onDelete,
+  onDeleteProof,
   handleSubmit,
 }) {
   return (
@@ -26,7 +26,7 @@ function ApplicationFormBody({
                 value={proofName}
                 onChange={(e) => setProofName(e.target.value)}
               />
-              {blurEventHandler(forms, handleChange, onAdd, onDelete)}
+              {blurEventHandler(forms, handleChange, onAddProof, onDeleteProof)}
             </div>
             <div className="button-down">
               <button
