@@ -2,7 +2,11 @@ import "./App.css";
 import ApplicationForm from "./components/ApplicationForm";
 
 function App() {
-  return <ApplicationForm />;
+  return (
+    <>
+      <ApplicationForm />
+    </>
+  );
 }
 
 export default App;

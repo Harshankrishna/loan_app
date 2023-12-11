@@ -1,15 +1,23 @@
 import React from "react";
 
-function ApplicationFormHeader({ proof, setProof, setDisplay }) {
+function ApplicationFormHeader({
+  proofs,
+  setProofNames,
+  setDisplay,
+  proofForm,
+  setProofForm,
+  forms,
+}) {
   return (
     <div className="document-requirements-container">
       <div className="text-center">
         <h2>Application Proof</h2>
         <button
           className="button"
-          disabled={proof}
+          // disabled={proof}
           onClick={() => {
-            setProof(true);
+            console.log("proofs", proofs);
+            setProofNames([...proofs, ""]);
             setDisplay(false);
           }}
         >
